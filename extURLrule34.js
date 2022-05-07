@@ -16,7 +16,7 @@ const extURLrule34 = async function extURLrule34() {
 
   //Opening browser instance
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   })
 
@@ -59,6 +59,7 @@ const extURLrule34 = async function extURLrule34() {
     //close browser
       await browser.close()
   }
+  await browser.close()
   return urlimg
 }
 

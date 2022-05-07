@@ -113,12 +113,12 @@ const generateImage = async (member) => {
     var avr = 0
     var marg = 0
     if (backImg.width<backImg.height){
-      marg = (backImg.width/100) * 5
-      avr = (backImg.width - (2 * marg) - (0.3 * marg))/2
+      marg = Math.floor((backImg.width/100) * 5)
+      avr = Math.floor((backImg.width - (2 * marg) - (0.3 * marg))/2)
 
     }else{
-      marg = (backImg.height/100) * 5
-      avr = (backImg.height - (2 * marg )- (0.3 * marg))/2
+      marg = Math.floor((backImg.height/100) * 5)
+      avr = Math.floor((backImg.height - (2 * marg )- (0.3 * marg))/2)
     }
 
     console.log(avr,marg)
@@ -129,7 +129,7 @@ const generateImage = async (member) => {
     console.log(avx,avy)
 
     //new location for code in example xD
-    let avatarURL = member.user.displayAvatarURL({format:"png",dynamic: false,size: avr })
+    let avatarURL = member.user.displayAvatarURL({format:"png",dynamic: false,size: 512 })
 
     const canvas = Canvas.createCanvas(backImg.width,backImg.height)
     const ctx = canvas.getContext("2d")
