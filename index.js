@@ -12,7 +12,27 @@ const client = new  Discord.Client({
     ]
 })
 
-client.on("ready", () => {
+let bot = {
+    client,
+    prefix: "n.",
+    owners: ["253288043094605824"]
+}
+
+client.commands = new Discord.Collection()
+client.events = new Discord.Collection()
+
+
+
+client.loadEvents = (bot,reload) => require("./handlers/events")(bot,reload)
+client.loadCommands = (bot, reload) => require("./handlers/commands")(bot,reload)
+
+client.loadEvents(bot,false)
+client.loadCommands(bot,false)
+
+module.exports = bot
+
+
+/*client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`)
 })
 
@@ -31,6 +51,6 @@ client.on("guildMemberAdd",async (member) =>{
         content:`<@${member.id}> WellCum to the server!`,
         files: [img]
     })
-})
+})*/
 client.login(process.env.TOKEN)
 
